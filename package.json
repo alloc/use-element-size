@@ -1,0 +1,45 @@
+{
+  "name": "use-element-size",
+  "version": "1.0.0",
+  "description": "React hook for tracking element size (480 bytes)",
+  "author": "Alec Larson",
+  "license": "MIT",
+  "repository": "alloc/use-element-size",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "prepare": "yarn build"
+  },
+  "peerDependencies": {
+    "react": ">=16.9"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.23",
+    "esbuild": "^0.6.17",
+    "prettier": "^2.0.5",
+    "react": "^16.9.0",
+    "rollup": "^2.23.0",
+    "rollup-plugin-bundle-size": "^1.0.3",
+    "rollup-plugin-dts": "^1.4.10",
+    "rollup-plugin-esbuild": "^2.4.2",
+    "typescript": "^3.5.3"
+  },
+  "keywords": [
+    "react-dom",
+    "react",
+    "hooks",
+    "use",
+    "element",
+    "resize",
+    "size",
+    "tiny",
+    "small",
+    "lightweight"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "demo",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "vite"
+  },
+  "dependencies": {
+    "@pika/react": "^16.13.1",
+    "@pika/react-dom": "^16.13.1",
+    "react-spring": "npm:@react-spring/web@*",
+    "use-element-size": "link:.."
+  },
+  "devDependencies": {
+    "@types/react-dom": "^16.9.8",
+    "vite": "^1.0.0-rc.4",
+    "vite-plugin-react": "^3.0.2"
+  }
+}
