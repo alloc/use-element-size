@@ -7,8 +7,8 @@ Only **480 bytes** min+gzip!
 ## Usage
 
 ```tsx
-import { useElementSize, Size } from 'use-element-size'
-import React, { useState } from 'react'
+import React from 'react'
+import { useElementSize } from 'use-element-size'
 
 const Example = () => {
   const ref = useElementSize((size, prevSize, elem) => {
