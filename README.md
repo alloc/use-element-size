@@ -43,3 +43,7 @@ const Example = () => {
 
   - The tracked element may be unmounted when `useElementSize` is still active.
   - You update local state from the callback when the `size` parameter is `null`.
+
+## Demo
+
+https://codesandbox.io/s/use-element-size-demo-dszk1?file=/src/index.tsx
