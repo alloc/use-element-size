@@ -29,6 +29,8 @@ const Example = () => {
 
 ## Quirks
 
+- ⚠️ Be sure the tracked element **never** has `position: static`.
+
 - The `size` parameter is `null` when the tracked element is unmounted.
 
 - The `prevSize` parameter is `null` when the tracked element was just mounted.
@@ -36,13 +38,6 @@ const Example = () => {
 - Tracking stops when `useElementSize` is passed `false/null/undefined` instead of a function.
 
 - The callback waits until the next `requestAnimationFrame` tick before running.
-
-- ⚠️ Be sure the tracked element **never** has `position: static`.
-
-- ⚠️ Be sure to wrap the callback with `useCallback` if **both** of these are true:
-
-  - The tracked element may be unmounted when `useElementSize` is still active.
-  - You update local state from the callback when the `size` parameter is `null`.
 
 ## Demo
 
