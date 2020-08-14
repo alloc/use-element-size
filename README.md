@@ -39,6 +39,8 @@ const Example = () => {
 
 - The callback waits until the next `requestAnimationFrame` tick before running.
 
+- The `Size` and `SizeCallback` types are exported for your convenience.
+
 ## Demo
 
 https://codesandbox.io/s/use-element-size-demo-dszk1?file=/src/index.tsx
