@@ -43,7 +43,7 @@ export function useElementSize(
         sensor.data = 'about:blank'
         sensor.setAttribute(
           'style',
-          'position:absolute;height:100%;width:100%;pointer-events:none'
+          'position:absolute;top:0;left:0;height:100%;width:100%;pointer-events:none'
         )
         sensor.onload = () =>
           sensor!.contentDocument!.defaultView!.addEventListener(
