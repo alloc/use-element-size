@@ -45,11 +45,13 @@ export function useElementSize(
           'style',
           'position:absolute;top:0;left:0;height:100%;width:100%;pointer-events:none'
         )
-        sensor.onload = () =>
+        sensor.onload = () => {
+          updateSize()
           sensor!.contentDocument!.defaultView!.addEventListener(
             'resize',
             updateSize
           )
+        }
 
         elem!.appendChild(sensor)
       }
