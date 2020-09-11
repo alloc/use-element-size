@@ -26,6 +26,14 @@ export function useElementSize(
     updateSensor()
   })
 
+  // Prevent `onSize` calls after unmount.
+  useEffect(
+    () => () => {
+      state.onSize = false
+    },
+    []
+  )
+
   // The ref function
   return useCallback(elem => {
     state.elem = elem
