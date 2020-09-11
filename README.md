@@ -2,7 +2,7 @@
 
 Track the size of a `react-dom` element (without `ResizeObserver`).
 
-Only **480 bytes** min+gzip!
+Only **540 bytes** min+gzip!
 
 ## Usage
 
