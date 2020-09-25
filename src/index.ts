@@ -44,6 +44,10 @@ export function useElementSize(
     let { elem, sensor, onSize } = state
     if (!sensor != !(elem && onSize)) {
       if (sensor) {
+        if (loadQueue.delete(state)) {
+          onSensorLoaded()
+        }
+        scheduleSizeUpdate(state)
         sensor.remove()
         sensor = null
       } else {
@@ -54,18 +58,12 @@ export function useElementSize(
           'style',
           'position:absolute;top:0;left:0;height:100%;width:100%;pointer-events:none;z-index:-1'
         )
-        sensor.onload = () => {
-          scheduleSizeUpdate(state)
-          sensor!.contentDocument!.defaultView!.addEventListener(
-            'resize',
-            () => scheduleSizeUpdate(state)
-          )
-        }
-
+        loadCount++
+        loadQueue.add(state)
+        sensor.onload = onSensorLoaded
         elem!.appendChild(sensor)
       }
       state.sensor = sensor
-      scheduleSizeUpdate(state)
     }
   }
 }
@@ -77,6 +75,24 @@ type State = {
   size: Size | null
   onSize: SizeCallback | Falsy
   sensor: HTMLObjectElement | null
+}
+
+// Sensors can take multiple frames to load, so their load handlers must be
+// batched to force initial `onSize` calls into one frame when possible.
+// Once the load count hits zero, the load queue is processed.
+let loadQueue = new Set<State>()
+let loadCount = 0
+
+// The `onload` handler attached to every sensor.
+function onSensorLoaded() {
+  if (--loadCount == 0) {
+    loadQueue.forEach(state => {
+      scheduleSizeUpdate(state)
+      state.sensor!.contentDocument!.defaultView!.onresize = () =>
+        scheduleSizeUpdate(state)
+    })
+    loadQueue.clear()
+  }
 }
 
 // Size updates are batched on a per-frame basis. This lets us avoid excessive
