@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState, RefCallback } from 'react'
+import { unstable_batchedUpdates as batchedUpdates } from 'react-dom'
 
 export type Size = { width: number; height: number }
 export type SizeCallback = (
@@ -15,12 +16,11 @@ export function useElementSize(
     size: null,
     onSize,
     sensor: null,
-    rafId: 0,
   }))
 
   useEffect(() => {
     if (onSize && !(state.elem || state.onSize)) {
-      updateSize()
+      scheduleSizeUpdate(state)
     }
     state.onSize = onSize
     updateSensor()
@@ -55,35 +55,18 @@ export function useElementSize(
           'position:absolute;top:0;left:0;height:100%;width:100%;pointer-events:none;z-index:-1'
         )
         sensor.onload = () => {
-          updateSize()
+          scheduleSizeUpdate(state)
           sensor!.contentDocument!.defaultView!.addEventListener(
             'resize',
-            updateSize
+            () => scheduleSizeUpdate(state)
           )
         }
 
         elem!.appendChild(sensor)
       }
       state.sensor = sensor
-      updateSize()
+      scheduleSizeUpdate(state)
     }
-  }
-
-  function updateSize() {
-    if (!state.rafId)
-      state.rafId = requestAnimationFrame(() => {
-        state.rafId = 0
-
-        let { elem, size, onSize } = state
-        if (onSize)
-          onSize(
-            (state.size = elem
-              ? { width: elem.clientWidth, height: elem.clientHeight }
-              : null),
-            size,
-            elem
-          )
-      })
   }
 }
 
@@ -94,5 +77,33 @@ type State = {
   size: Size | null
   onSize: SizeCallback | Falsy
   sensor: HTMLObjectElement | null
-  rafId: number
+}
+
+// Size updates are batched on a per-frame basis. This lets us avoid excessive
+// re-rendering when multiple handlers need to set React-owned state.
+let updateQueue: State[] = []
+
+function scheduleSizeUpdate(state: State) {
+  if (!updateQueue.length)
+    requestAnimationFrame(() =>
+      batchedUpdates(() => {
+        let current = updateQueue
+        updateQueue = []
+        current.forEach(state => {
+          let { elem, size, onSize } = state
+          if (onSize)
+            onSize(
+              (state.size = elem
+                ? { width: elem.clientWidth, height: elem.clientHeight }
+                : null),
+              size,
+              elem
+            )
+        })
+      })
+    )
+
+  if (!updateQueue.includes(state)) {
+    updateQueue.push(state)
+  }
 }
