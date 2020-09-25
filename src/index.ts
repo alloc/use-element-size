@@ -49,6 +49,7 @@ export function useElementSize(
       } else {
         sensor = document.createElement('object')
         sensor.data = 'about:blank'
+        sensor.tabIndex = -1
         sensor.setAttribute(
           'style',
           'position:absolute;top:0;left:0;height:100%;width:100%;pointer-events:none;z-index:-1'
