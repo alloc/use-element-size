@@ -119,7 +119,17 @@ function scheduleSizeUpdate(state: State) {
       })
     )
 
-  if (!updateQueue.includes(state)) {
-    updateQueue.push(state)
-  }
+  // Sort the queue so that ancestors update first, which gives descendants
+  // access to any synchronous updates made by their ancestors.
+  let i = updateQueue.length
+  if (state.elem)
+    for (; i > 0; i--) {
+      let queued = updateQueue[i - 1]
+      if (queued == state) return
+      if (queued.elem && queued.elem.contains(state.elem)) {
+        break // Found an ancestor.
+      }
+    }
+
+  updateQueue.splice(i, 0, state)
 }
