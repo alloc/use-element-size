@@ -13,6 +13,7 @@ const bundle = format => ({
     file: `${name}.${ext(format)}`,
     format: format == 'cjs' ? 'cjs' : 'es',
     sourcemap: format != 'dts',
+    sourcemapExcludeSources: true,
   },
   plugins:
     format == 'dts' ? [dts()] : [esbuild(), bundleSize()],
