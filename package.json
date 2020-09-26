@@ -16,6 +16,9 @@
     "build": "rollup -c",
     "prepare": "yarn build"
   },
+  "dependencies": {
+    "rafz": "^0.1.2"
+  },
   "peerDependencies": {
     "react": ">=16.9",
     "react-dom": ">=16.9"

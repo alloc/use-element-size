@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState, RefCallback } from 'react'
-import { unstable_batchedUpdates as batchedUpdates } from 'react-dom'
+import { raf } from 'rafz'
 
 export type Size = { width: number; height: number }
 export type SizeCallback = (
@@ -100,25 +100,6 @@ function onSensorLoaded() {
 let updateQueue: State[] = []
 
 function scheduleSizeUpdate(state: State) {
-  if (!updateQueue.length)
-    requestAnimationFrame(() =>
-      batchedUpdates(() => {
-        let current = updateQueue
-        updateQueue = []
-        current.forEach(state => {
-          let { elem, size, onSize } = state
-          if (onSize)
-            onSize(
-              (state.size = elem
-                ? { width: elem.clientWidth, height: elem.clientHeight }
-                : null),
-              size,
-              elem
-            )
-        })
-      })
-    )
-
   // Sort the queue so that ancestors update first, which gives descendants
   // access to any synchronous updates made by their ancestors.
   let i = updateQueue.length
@@ -132,4 +113,21 @@ function scheduleSizeUpdate(state: State) {
     }
 
   updateQueue.splice(i, 0, state)
+  raf.onFrame(flushSizeUpdates)
+}
+
+function flushSizeUpdates() {
+  let current = updateQueue
+  updateQueue = []
+  current.forEach(state => {
+    let { elem, size, onSize } = state
+    if (onSize)
+      onSize(
+        (state.size = elem
+          ? { width: elem.clientWidth, height: elem.clientHeight }
+          : null),
+        size,
+        elem
+      )
+  })
 }
