@@ -1,6 +1,6 @@
 {
   "name": "use-element-size",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "React hook for tracking element size (540 bytes)",
   "author": "Alec Larson",
   "license": "MIT",
