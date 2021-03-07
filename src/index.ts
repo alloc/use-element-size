@@ -51,19 +51,20 @@ export function useElementSize(
         sensor.remove()
         sensor = null
       } else {
-        sensor = document.createElement('object')
-        sensor.data = 'about:blank'
+        sensor = document.createElement('iframe')
         sensor.tabIndex = -1
-        sensor.setAttribute(
-          'style',
+        sensor.style.cssText =
           'position:absolute;top:0;left:0;height:100%;width:100%;pointer-events:none;z-index:-1'
-        )
+
         loadCount++
         loadQueue.add(state)
         sensor.onload = onSensorLoaded
-        elem!.appendChild(sensor)
       }
+
       state.sensor = sensor
+
+      // In Chrome, `onload` is called synchronously, so `state.sensor` must be set first.
+      sensor && elem!.appendChild(sensor)
     }
   }
 }
@@ -74,7 +75,7 @@ type State = {
   elem: HTMLElement | null
   size: Size | null
   onSize: SizeCallback | Falsy
-  sensor: HTMLObjectElement | null
+  sensor: HTMLIFrameElement | null
 }
 
 // Sensors can take multiple frames to load, so their load handlers must be
@@ -88,8 +89,7 @@ function onSensorLoaded() {
   if (--loadCount == 0) {
     loadQueue.forEach(state => {
       scheduleSizeUpdate(state)
-      state.sensor!.contentDocument!.defaultView!.onresize = () =>
-        scheduleSizeUpdate(state)
+      state.sensor!.contentWindow!.onresize = () => scheduleSizeUpdate(state)
     })
     loadQueue.clear()
   }
