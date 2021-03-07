@@ -3,16 +3,16 @@ dependencies:
 devDependencies:
   '@types/react': 16.9.46
   '@types/react-dom': 16.9.8
-  esbuild: 0.6.22
+  esbuild: 0.8.56
   prettier: 2.0.5
   react: 16.13.1
   react-dom: 16.13.1_react@16.13.1
   rollup: 2.23.1
   rollup-plugin-bundle-size: 1.0.3
   rollup-plugin-dts: 1.4.10_rollup@2.23.1+typescript@3.9.7
-  rollup-plugin-esbuild: 2.4.2_esbuild@0.6.22+rollup@2.23.1
+  rollup-plugin-esbuild: 2.6.1_esbuild@0.8.56+rollup@2.23.1
   typescript: 3.9.7
-lockfileVersion: 5.1
+lockfileVersion: 5.2
 packages:
   /@babel/code-frame/7.10.4:
     dependencies:
@@ -35,10 +35,9 @@ packages:
     optional: true
     resolution:
       integrity: sha512-i6rgnR/YgPEQzZZnbTHHuZdlE8qyoBNalD6F+q4vAFlcMEcqmkoG+mPqJYJCo63qPf74+Y1UZsl3l6f7/RIkmA==
-  /@rollup/pluginutils/3.1.0_rollup@2.23.1:
+  /@rollup/pluginutils/4.1.0_rollup@2.23.1:
     dependencies:
-      '@types/estree': 0.0.39
-      estree-walker: 1.0.1
+      estree-walker: 2.0.2
       picomatch: 2.2.2
       rollup: 2.23.1
     dev: true
@@ -47,11 +46,7 @@ packages:
     peerDependencies:
       rollup: ^1.20.0||^2.0.0
     resolution:
-      integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==
-  /@types/estree/0.0.39:
-    dev: true
-    resolution:
-      integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==
+      integrity: sha512-TrBhfJkFxA+ER+ew2U2/fHbebhLT/l/2pRk0hfj9KusXUuRXd2v0R58AfaZK9VXDQ4TogOSEmICVrQAA3zFnHQ==
   /@types/prop-types/15.7.3:
     dev: true
     resolution:
@@ -133,22 +128,22 @@ packages:
     dev: true
     resolution:
       integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==
-  /esbuild/0.6.22:
+  /esbuild/0.8.56:
     dev: true
     hasBin: true
     requiresBuild: true
     resolution:
-      integrity: sha512-dgcdoOZ7rghMageuGFS6geQ77UacoZ/qrd0MRc2iPnYtMNfQ1cJ7mVkotVpUDJYdOWvLVa87NFEtqPg7D2mKSA==
+      integrity: sha512-PTMdAWK3JI2MNW811znGssGP5GR44tQPr++VQ1rPP0n8Z1cTKbCPD3S/kXPLr3ZZDIwAaVm08fuFym6Rp8l/0A==
   /escape-string-regexp/1.0.5:
     dev: true
     engines:
       node: '>=0.8.0'
     resolution:
       integrity: sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
-  /estree-walker/1.0.1:
+  /estree-walker/2.0.2:
     dev: true
     resolution:
-      integrity: sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==
+      integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==
   /figures/1.7.0:
     dependencies:
       escape-string-regexp: 1.0.5
@@ -308,20 +303,20 @@ packages:
       typescript: ^3.9.7
     resolution:
       integrity: sha512-bL6MBXc8lK7D5b/tYbHaglxs4ZxMQTQilGA6Xm9KQBEj4h9ZwIDlAsvDooGjJ/cOw23r3POTRtSCEyTHxtzHJg==
-  /rollup-plugin-esbuild/2.4.2_esbuild@0.6.22+rollup@2.23.1:
+  /rollup-plugin-esbuild/2.6.1_esbuild@0.8.56+rollup@2.23.1:
     dependencies:
-      '@rollup/pluginutils': 3.1.0_rollup@2.23.1
-      esbuild: 0.6.22
+      '@rollup/pluginutils': 4.1.0_rollup@2.23.1
+      esbuild: 0.8.56
       joycon: 2.2.5
       strip-json-comments: 3.1.1
     dev: true
     engines:
       node: '>=12'
     peerDependencies:
-      esbuild: ^0.6.0
+      esbuild: '>=0.7.0'
       rollup: '*'
     resolution:
-      integrity: sha512-GJOaC2onOPcCN0w7tYv60Thg3ciX40YRubeGyS/DRo862udAiFuQGTIBSyNX20EWyvYLZmZ967ziGdzUJtIaAg==
+      integrity: sha512-hskMEQQ4Vxlyoeg1OWlFTwWHIhpNaw6q+diOT7p9pdkk34m9Mbk3aymS/JbTqLXy/AbJi22iuXrucknKpeczfg==
   /rollup/2.23.1:
     dev: true
     engines:
@@ -377,7 +372,7 @@ packages:
 specifiers:
   '@types/react': ^16.9.0
   '@types/react-dom': ^16.9.0
-  esbuild: ^0.6.17
+  esbuild: ^0.8.56
   prettier: ^2.0.5
   rafz: ^0.1.2
   react: ^16.9.0
@@ -385,5 +380,5 @@ specifiers:
   rollup: ^2.23.0
   rollup-plugin-bundle-size: ^1.0.3
   rollup-plugin-dts: ^1.4.10
-  rollup-plugin-esbuild: ^2.4.2
+  rollup-plugin-esbuild: ^2.6.1
   typescript: ^3.5.3

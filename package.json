@@ -26,14 +26,14 @@
   "devDependencies": {
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
-    "esbuild": "^0.6.17",
+    "esbuild": "^0.8.56",
     "prettier": "^2.0.5",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "rollup": "^2.23.0",
     "rollup-plugin-bundle-size": "^1.0.3",
     "rollup-plugin-dts": "^1.4.10",
-    "rollup-plugin-esbuild": "^2.4.2",
+    "rollup-plugin-esbuild": "^2.6.1",
     "typescript": "^3.5.3"
   },
   "keywords": [
