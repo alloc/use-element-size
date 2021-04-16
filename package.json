@@ -17,7 +17,7 @@
     "prepare": "yarn build"
   },
   "dependencies": {
-    "rafz": "^0.1.2"
+    "rafz": "next"
   },
   "peerDependencies": {
     "react": ">=16.9",

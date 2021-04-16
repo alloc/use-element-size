@@ -1,5 +1,5 @@
 dependencies:
-  rafz: 0.1.2
+  rafz: 0.2.0-0
 devDependencies:
   '@types/react': 16.9.46
   '@types/react-dom': 16.9.8
@@ -254,10 +254,16 @@ packages:
     dev: true
     resolution:
       integrity: sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
-  /rafz/0.1.2:
+  /rafz/0.2.0-0:
+    dependencies:
+      react-batched-updates: 1.0.1
     dev: false
     resolution:
-      integrity: sha512-2DlwOAIIQTRmgxyBvof/gafEEnstwScFPKzljoAv4++TnW8gow6MsE1rWMoKafr6M/+4zY3oL4/JTc72yLaqCg==
+      integrity: sha512-3l0Tm/OM5lJQgksQxA0RN3buwjSbwKM8ll6HcXHC9fRwCjkdqiQ9UL3su+A8AlrfDzefor4yw+yW4+tCaXsDqA==
+  /react-batched-updates/1.0.1:
+    dev: false
+    resolution:
+      integrity: sha512-NrHhi0/E4/cvVjCt7bv/E6oHiJCDSLglWRJgLRIHtqloSJ9m9ZErvrxw1Akc9IvtZBe+dsY67d5qWbShlfmUCQ==
   /react-dom/16.13.1_react@16.13.1:
     dependencies:
       loose-envify: 1.4.0
@@ -374,7 +380,7 @@ specifiers:
   '@types/react-dom': ^16.9.0
   esbuild: ^0.8.56
   prettier: ^2.0.5
-  rafz: ^0.1.2
+  rafz: next
   react: ^16.9.0
   react-dom: ^16.9.0
   rollup: ^2.23.0
