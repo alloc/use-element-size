@@ -52,6 +52,7 @@ export function useElementSize(
         sensor = null
       } else {
         sensor = document.createElement('iframe')
+        sensor.setAttribute('aria-hidden', 'true')
         sensor.tabIndex = -1
         sensor.style.cssText =
           'position:absolute;top:0;left:0;height:100%;width:100%;pointer-events:none;z-index:-1'
