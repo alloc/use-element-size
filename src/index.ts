@@ -55,7 +55,7 @@ export function useElementSize(
         sensor.setAttribute('aria-hidden', 'true')
         sensor.tabIndex = -1
         sensor.style.cssText =
-          'position:absolute;top:0;left:0;height:100%;width:100%;pointer-events:none;z-index:-1'
+          'position:absolute;top:0;left:0;height:100%;width:100%;pointer-events:none;z-index:-1;visibility:hidden;'
 
         loadCount++
         loadQueue.add(state)
