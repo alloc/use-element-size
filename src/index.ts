@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState, RefCallback } from 'react'
 import { raf } from 'rafz'
+import { RefCallback, useCallback, useEffect, useState } from 'react'
 
 export type Size = { width: number; height: number }
 export type SizeCallback = (
@@ -55,7 +55,7 @@ export function useElementSize(
         sensor.setAttribute('aria-hidden', 'true')
         sensor.tabIndex = -1
         sensor.style.cssText =
-          'position:absolute;top:0;left:0;height:100%;width:100%;pointer-events:none;z-index:-1'
+          'position:absolute;top:0;left:0;height:100%;width:100%;pointer-events:none;z-index:-1;border:none'
 
         loadCount++
         loadQueue.add(state)
